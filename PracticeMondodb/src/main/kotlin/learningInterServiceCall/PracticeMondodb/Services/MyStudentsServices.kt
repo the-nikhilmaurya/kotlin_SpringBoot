@@ -46,10 +46,10 @@ class MyStudentsServices (val repository: MyStudentRepository){
     fun deleteStudent(username: String): ResponseEntity<ApiResponseService> {
         return try {
             if (!repository.existsById(username)){
-                ResponseEntity.badRequest().body(ErrorResponse("student with username: ${username} does not exists",HttpStatus.BAD_REQUEST))
+                return ResponseEntity.badRequest().body(ErrorResponse("student with username: ${username} does not exists",HttpStatus.BAD_REQUEST))
             }
             repository.deleteById(username)
-            return ResponseEntity.ok().body(ErrorResponse("id: $username deleted successfully",HttpStatus.ACCEPTED))
+            return ResponseEntity.ok().body(ErrorResponse("student with username: $username deleted successfully",HttpStatus.ACCEPTED))
         }catch (e:Exception){
             ResponseEntity.internalServerError().body(ErrorResponse("Error Founding data",HttpStatus.FORBIDDEN))
         }

@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("")
+@RequestMapping("students")
 class MyStudentsController (val service:MyStudentsServices){
 
     @GetMapping()

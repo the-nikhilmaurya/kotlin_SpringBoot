@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Mono
 
 @RestController
-@RequestMapping("students")
+@RequestMapping("server")
 class server8081 (val server:Server2){
 
     @GetMapping
