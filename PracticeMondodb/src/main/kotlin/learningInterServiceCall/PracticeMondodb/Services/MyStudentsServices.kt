@@ -3,13 +3,15 @@ package learningInterServiceCall.PracticeMondodb.Services
 import learningInterServiceCall.PracticeMondodb.Model.MyStudents
 import learningInterServiceCall.PracticeMondodb.Model.StudentDto
 import learningInterServiceCall.PracticeMondodb.Repository.MyStudentRepository
+import learningInterServiceCall.PracticeMondodb.Repository.ReactiveStudentsRepository
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
+import reactor.core.publisher.Flux
 
 
 @Service
-class MyStudentsServices (val repository: MyStudentRepository){
+class MyStudentsServices (val repository: MyStudentRepository,val reactiveRepo:ReactiveStudentsRepository){
 
     fun getAllData(): ResponseEntity<ApiResponseService> {
         return try {
@@ -53,5 +55,8 @@ class MyStudentsServices (val repository: MyStudentRepository){
         }catch (e:Exception){
             ResponseEntity.internalServerError().body(ErrorResponse("Error Founding data",HttpStatus.FORBIDDEN))
         }
+    }
+    fun getAllStudentMono(): Flux<MyStudents> {
+        return reactiveRepo.findAll()
     }
 }

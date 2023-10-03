@@ -5,6 +5,7 @@ import learningInterServiceCall.PracticeMondodb.Services.ApiResponseService
 import learningInterServiceCall.PracticeMondodb.Services.MyStudentsServices
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import reactor.core.publisher.Flux
 
 @RestController
 @RequestMapping("students")
@@ -29,6 +30,13 @@ class MyStudentsController (val service:MyStudentsServices){
     @DeleteMapping("{username}")
     fun deleteStudent(@PathVariable username:String): ResponseEntity<ApiResponseService> {
         return service.deleteStudent(username)
+    }
+
+    @GetMapping("monotry")
+    fun getStudents(@PathVariable name:String): Flux<MyStudents> {
+
+        println("from monotry: ${service.getAllStudentMono()}")
+        return service.getAllStudentMono()
     }
 
 
