@@ -5,7 +5,7 @@ import learningInterServiceCall.PracticeMondodb.Services.ApiResponseService
 import learningInterServiceCall.PracticeMondodb.Services.MyStudentsServices
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import reactor.core.publisher.Flux
+import reactor.core.publisher.Mono
 
 @RestController
 @RequestMapping("students")
@@ -32,12 +32,17 @@ class MyStudentsController (val service:MyStudentsServices){
         return service.deleteStudent(username)
     }
 
-    @GetMapping("monotry")
-    fun getStudents(@PathVariable name:String): Flux<MyStudents> {
+    @GetMapping("monoget")
+    fun getStudents() = service.getAllStudentMono()
 
-        println("from monotry: ${service.getAllStudentMono()}")
-        return service.getAllStudentMono()
+    @PostMapping("monopost")
+    fun saveStudents(@RequestBody student: MyStudents): Mono<MyStudents> {
+        return service.saveStudents(student)
     }
+
+    // testing pracice
+    @GetMapping("add")
+    fun add(@RequestParam a:String,@RequestParam b:String) = a+b
 
 
 }

@@ -55,6 +55,7 @@ class Server2(val webClientBuilder: WebClient.Builder) {
 
 
     fun createStudent(student: StudentDto): Mono<String> {
+        println("trying for kafka")
       return webClientBuilder
             .build()
             .post()

@@ -27,7 +27,14 @@ dependencies {
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
+	implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive") // to reactice approach
+	implementation("org.springframework.kafka:spring-kafka")			// to use kafka
+	testImplementation("org.springframework.kafka:spring-kafka-test")
+	implementation("org.slf4j:slf4j-api")  // for logging
+	implementation("ch.qos.logback:logback-classic")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
+	testImplementation("org.junit.jupiter:junit-jupiter-engine:5.7.2")
 }
 
 tasks.withType<KotlinCompile> {

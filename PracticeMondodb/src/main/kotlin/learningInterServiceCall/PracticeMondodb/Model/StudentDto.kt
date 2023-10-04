@@ -1,6 +1,6 @@
 package learningInterServiceCall.PracticeMondodb.Model
 
-class StudentDto (
+data class StudentDto (
     val name:String ,
     val surname:String,
     val section:String,

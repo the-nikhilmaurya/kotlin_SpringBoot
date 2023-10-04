@@ -5,4 +5,5 @@ import org.springframework.data.mongodb.repository.ReactiveMongoRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface ReactiveStudentsRepository : ReactiveMongoRepository<MyStudents,String>
+interface StudentsRepository : ReactiveMongoRepository<MyStudents, String>
+//interface StudentsRepository : MongoRepository<MyStudents,String>

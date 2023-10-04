@@ -2,7 +2,6 @@ package learningInterServiceCall.PracticeMondodb.Router
 
 import learningInterServiceCall.PracticeMondodb.Handler.CustomerHandler
 import learningInterServiceCall.PracticeMondodb.Model.CustomerDto
-import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.reactive.function.server.RouterFunction
 import org.springframework.web.reactive.function.server.RouterFunctions
@@ -14,9 +13,7 @@ import reactor.core.publisher.Flux
 class CustomerRouter(val handler: CustomerHandler) {
 
 
-
-    @Bean
-    fun routerFunction(): RouterFunction<ServerResponse> {
+    fun routerFunction  (): RouterFunction<ServerResponse> {
         println("form routerrr")
         return RouterFunctions.route()
             .GET("/router/customers") { request ->
@@ -31,11 +28,4 @@ class CustomerRouter(val handler: CustomerHandler) {
             .build()
     }
 
-//    @Bean
-//    fun routerFunction(): RouterFunction<ServerResponse> {
-//        println("form routerrr")
-//    return route()
-//            .GET("/router/customers",handler::getAllCustomer)
-//            .build()
-//    }
 }
